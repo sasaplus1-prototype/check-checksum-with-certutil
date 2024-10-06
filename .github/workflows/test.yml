@@ -16,3 +16,4 @@ jobs:
       - run: certutil -hashfile -? || true
       - run: certutil -hashfile README.md SHA256 | tee README.md.sha256
       - run: certutil -hashfile LICENSE SHA256 | tee LICENSE.sha256
+      - run: certutil -hashfile README.md LICENSE SHA256 | tee sha256sums.txt
