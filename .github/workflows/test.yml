@@ -16,10 +16,10 @@ jobs:
       - run: certutil -hashfile -? || true
       - run: >
           certutil -hashfile README.md SHA256 |
-          awk 'NR==1 {filename=$4} NR==2 {hash=$1} END {print hash + "  " + filename}' |
+          awk 'NR==1 {filename=$4} NR==2 {hash=$1} END {print hash "  " filename}' |
           tee -a sha256sums.txt
       - run: >
           certutil -hashfile LICENSE SHA256 |
-          awk 'NR==1 {filename=$4} NR==2 {hash=$1} END {print hash + "  " + filename}' |
+          awk 'NR==1 {filename=$4} NR==2 {hash=$1} END {print hash "  " filename}' |
           tee -a sha256sums.txt
       - run: cat sha256sums.txt
