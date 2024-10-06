@@ -14,10 +14,12 @@ jobs:
       - uses: actions/checkout@v4
       - run: certutil -?
       - run: certutil -hashfile -? || true
+      - run: certutil -hashfile README.md SHA256
       - run: >
           certutil -hashfile README.md SHA256 |
           awk 'NR==1 {sub(/:$/, "", $4); filename=$4} NR==2 {hash=$1} END {print hash "  " filename}' |
           tee -a certutil-shasums.txt
+      - run: certutil -hashfile LICENSE SHA256
       - run: >
           certutil -hashfile LICENSE SHA256 |
           awk 'NR==1 {sub(/:$/, "", $4); filename=$4} NR==2 {hash=$1} END {print hash "  " filename}' |
