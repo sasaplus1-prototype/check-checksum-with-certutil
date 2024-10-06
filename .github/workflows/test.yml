@@ -1,0 +1,16 @@
+name: test
+
+on:
+  - push
+
+jobs:
+  test:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - run: certutil -hashfile README.md SHA256 | tee README.md.sha256
+      - run: certutil -hashfile LICENSE SHA256 | tee LICENSE.sha256
