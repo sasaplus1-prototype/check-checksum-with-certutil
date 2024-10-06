@@ -13,5 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: certutil -?
+      - run: certutil -hashfile -?
       - run: certutil -hashfile README.md SHA256 | tee README.md.sha256
       - run: certutil -hashfile LICENSE SHA256 | tee LICENSE.sha256
